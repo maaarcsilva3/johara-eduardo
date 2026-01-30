@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Marital Gazette - Ed & Hara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "news-paper": "#f4f1ea", // Aged paper
+              "news-ink": "#1a1a1a",   // Fresh ink
+              "news-fade": "#4a4a4a",  // Faded ink
+              "news-accent": "#8b0000", // Editorial red
+            },
+            fontFamily: {
+              masthead: ['"UnifrakturMaguntia"', "serif"],
+              headline: ['"Playfair Display"', "serif"],
+              body: ['"Old Standard TT"', "serif"],
+              sans: ['"Montserrat"', "sans-serif"],
+            },
+            backgroundImage: {
+              "paper-texture": "url('https://www.transparenttextures.com/patterns/handmade-paper.png')",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .news-border-double {
+        border-style: double;
+        border-width: 4px 0;
+      }
+      .news-column {
+        column-rule: 1px solid #1a1a1a;
+      }
+      @media (min-width: 768px) {
+        .news-column {
+          column-count: 2;
+          column-gap: 2rem;
+        }
+      }
+      .half-tone {
+        filter: grayscale(100%) contrast(1.2);
+        mix-blend-mode: multiply;
+      }
+      .ink-bleed {
+        text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
+      }
+      
+      /* Animation for "Breaking News" feel */
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .blink {
+        animation: blink 1s infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-[#dcd8c9] text-news-ink font-body selection:bg-news-accent selection:text-white">
+    
+    <!-- Paper Container -->
+    <div class="max-w-5xl mx-auto my-4 md:my-10 bg-news-paper shadow-[0_0_50px_rgba(0,0,0,0.2)] relative overflow-hidden p-4 md:p-8 bg-paper-texture">
+      
+      <!-- Masthead -->
+      <header class="text-center border-b-2 border-news-ink pb-4">
+        <div class="flex justify-between items-end text-[10px] md:text-xs uppercase tracking-widest font-sans mb-2 border-b border-news-ink/20 pb-1">
+          <span>Vol. I ... No. 1</span>
+          <span class="hidden md:block">Rodriguez, Rizal Edition</span>
+          <span>Price: One Lifetime</span>
+        </div>
+        
+        <h1 class="font-masthead text-6xl md:text-9xl my-2 ink-bleed">The Marital Gazette</h1>
+        
+        <div class="news-border-double py-1 flex justify-between items-center px-2 md:px-4 font-sans text-[10px] md:text-xs font-bold uppercase tracking-tighter">
+          <span>Friday, June 05, 2026</span>
+          <span class="text-news-accent blink">● Special Edition ●</span>
+          <span>Weather: Sunny with 100% Love</span>
+        </div>
+      </header>
+
+      <!-- Main News Section -->
+      <main class="mt-8">
+        <!-- Main Headline -->
+        <div class="text-center mb-8">
+          <h2 class="font-headline text-5xl md:text-8xl leading-none mb-4 uppercase font-black tracking-tighter">
+            Ed & Hara to Wed!
+          </h2>
+          <p class="font-headline italic text-xl md:text-2xl text-news-fade">
+            “A Union for the Ages,” Locals Declare as Wedding Date is Set
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          
+          <!-- Left Article Area -->
+          <div class="md:col-span-8 news-column text-justify leading-relaxed">
+            <div class="mb-6">
+              <span class="float-left text-7xl font-headline leading-none pr-3 pt-1">R</span>
+              <p class="mb-4">
+                <strong>ODRIGUEZ, RIZAL</strong> — In a stunning announcement that has captured the hearts of the community, Ed and Hara have officially declared their intention to unite in matrimony. The couple, known for their unwavering devotion, will exchange vows in a ceremony scheduled for the fifth of June, 2026. 
+              </p>
+              <p class="mb-4">
+                The event, which is already being hailed as the "Social Event of the Century," will feature traditional <strong>Filipiniana and Barong Tagalog</strong> attire, honoring the rich cultural heritage of the Philippines. Guests are encouraged to prepare for a day of celebration, laughter, and timeless traditions.
+              </p>
+              
+              <!-- Image with Caption -->
+              <div class="my-6 border-y border-news-ink py-4">
+                <div class="bg-gray-300 w-full aspect-[4/3] relative overflow-hidden grayscale contrast-125 border border-news-ink p-1">
+                    <img 
+                        src="./image1.png" 
+                        alt="The Happy Couple" 
+                        class="w-full h-full object-contain half-tone"
+                        onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800'"
+                    />
+                </div>
+                <p class="text-xs italic mt-2 text-center font-sans uppercase tracking-tight">
+                    Fig 1.1: The Happy Couple, Ed and Hara, pictured shortly after the announcement.
+                </p>
+              </div>
+
+              <p>
+                Sources close to the couple report that the hashtag <span class="text-news-accent font-bold">#kayHARAtinEDhana</span> has already begun trending in anticipation. "It's a match made in heaven," said one anonymous family member. "The kind of story you only read about in the papers—and now, here it is."
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Sidebar / Classifieds -->
+          <div class="md:col-span-4 space-y-8">
+            
+            <!-- Details Box -->
+            <div class="border-4 border-news-ink p-4 bg-white/50">
+              <h3 class="font-sans font-black text-center uppercase border-b-2 border-news-ink mb-3 pb-1 tracking-widest">Official Bulletin</h3>
+              <ul class="space-y-4 text-sm font-bold uppercase tracking-tighter">
+                <li class="flex justify-between border-b border-news-ink/10 pb-1">
+                  <span>Date:</span>
+                  <span>June 05, 2026</span>
+                </li>
+                <li class="flex justify-between border-b border-news-ink/10 pb-1">
+                  <span>Time:</span>
+                  <span>3:00 in the PM</span>
+                </li>
+                <li class="flex justify-between border-b border-news-ink/10 pb-1">
+                  <span>Loc:</span>
+                  <span>Rodriguez, Rizal</span>
+                </li>
+                <li class="flex justify-between border-b border-news-ink/10 pb-1">
+                  <span>Dress:</span>
+                  <span>Filipiniana</span>
+                </li>
+              </ul>
+              <div class="mt-4 text-center">
+                <p class="text-[10px] italic leading-tight">Formal Invitation to Follow via Courier</p>
+              </div>
+            </div>
+
+            <!-- Countdown Widget -->
+            <div class="bg-news-ink text-news-paper p-4 text-center">
+              <h4 class="font-sans text-[10px] uppercase tracking-[0.3em] mb-4">Edition Deadline Countdown</h4>
+              <div id="countdown" class="grid grid-cols-2 gap-2">
+                <div class="border border-news-paper/30 py-2">
+                  <span id="days" class="text-3xl font-headline block">00</span>
+                  <span class="text-[8px] uppercase">Araw</span>
+                </div>
+                <div class="border border-news-paper/30 py-2">
+                  <span id="hours" class="text-3xl font-headline block">00</span>
+                  <span class="text-[8px] uppercase">Oras</span>
+                </div>
+                <div class="border border-news-paper/30 py-2">
+                  <span id="minutes" class="text-3xl font-headline block">00</span>
+                  <span class="text-[8px] uppercase">Minuto</span>
+                </div>
+                <div class="border border-news-paper/30 py-2">
+                  <span id="seconds" class="text-3xl font-headline block">00</span>
+                  <span class="text-[8px] uppercase">Segundo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editorial Quote -->
+            <div class="italic border-l-4 border-news-accent pl-4 py-2">
+              <p class="text-lg font-headline">"Love is the only news that is always fresh."</p>
+              <cite class="text-xs uppercase font-sans font-bold block mt-2">— The Editor</cite>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer / Classifieds Section -->
+      <footer class="mt-12 pt-6 border-t-2 border-news-ink">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] uppercase font-bold tracking-tighter">
+          <div class="border-r border-news-ink/20 pr-4">
+            <h5 class="text-news-accent mb-1">Classifieds</h5>
+            <p>FOUND: One soulmate. Never letting go. See Rodriguez for details.</p>
+          </div>
+          <div class="border-r border-news-ink/20 pr-4">
+            <h5 class="text-news-accent mb-1">Lost & Found</h5>
+            <p>LOST: Single status. Reward: A lifetime of happiness.</p>
+          </div>
+          <div class="border-r border-news-ink/20 pr-4">
+            <h5 class="text-news-accent mb-1">Wanted</h5>
+            <p>WANTED: Your presence on our big day. RSVP soon.</p>
+          </div>
+          <div>
+            <h5 class="text-news-accent mb-1">Public Notice</h5>
+            <p>The hashtag #kayHARAtinEDhana is now public property.</p>
+          </div>
+        </div>
+        <div class="mt-8 text-center text-[9px] opacity-50 uppercase tracking-[.5em] border-t border-news-ink/10 pt-4">
+          © 2026 The Marital Gazette Publishing Group. All Rights Reserved.
+        </div>
+      </footer>
+
+      <!-- Stamp Decoration -->
+      <div class="absolute -top-4 -right-4 w-32 h-32 opacity-10 pointer-events-none rotate-12">
+        <svg viewBox="0 0 100 100" class="w-full h-full fill-current text-news-ink">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="50" y="45" text-anchor="middle" font-size="8" font-family="sans-serif">APPROVED</text>
+          <text x="50" y="60" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold">FOR LOVE</text>
+        </svg>
+      </div>
+
+    </div>
+
+    <script>
+      const weddingDate = new Date("June 05, 2026 15:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = 
+                "<div class='col-span-2 text-sm font-sans uppercase p-4'>Already Published!</div>";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, "0");
+        document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>
