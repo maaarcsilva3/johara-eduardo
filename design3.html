@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save the Date - Sarah & James</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@200;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "fil-gold": "#D4AF37",
+              "fil-brown": "#4A3728",
+              "fil-cream": "#FAF8F0",
+              "fil-accent": "#8C7B6C",
+            },
+            fontFamily: {
+              script: ['"Great Vibes"', "cursive"],
+              serif: ['"Cormorant Garamond"', "serif"],
+              sans: ['"Montserrat"', "sans-serif"],
+            },
+            backgroundImage: {
+              "pina-texture":
+                "url('https://www.transparenttextures.com/patterns/natural-paper.png')",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .fade-in {
+        animation: fadeIn 2s ease-in-out forwards;
+        opacity: 0;
+      }
+
+      .slide-up {
+        animation: slideUp 1.5s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      .delay-1000 {
+        animation-delay: 1s;
+      }
+      .delay-1500 {
+        animation-delay: 1.5s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-fil-cream text-fil-brown overflow-x-hidden font-serif">
+    <div class="min-h-screen flex flex-col md:flex-row relative">
+      <!-- Left Side Image -->
+      <div
+        class="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden border-b-4 md:border-b-0 md:border-r-4 border-double border-fil-gold/30"
+      >
+        <img
+          src="./image1.png"
+          alt="Couple Photo"
+          class="absolute inset-0 w-full h-full object-cover filter sepia-[0.3] contrast-[0.9]"
+        />
+        <div class="absolute inset-0 bg-fil-brown/20 mix-blend-multiply"></div>
+
+        <div
+          class="absolute bottom-8 left-0 right-0 text-center text-fil-cream/90 md:hidden p-4"
+        >
+          <p class="font-serif italic text-lg tracking-widest drop-shadow-md">
+            #kayHARAtinEDhana
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Side Content -->
+      <div
+        class="w-full md:w-1/2 h-auto md:h-screen bg-fil-cream relative flex flex-col justify-center items-center p-8 md:p-16 text-center"
+      >
+        <!-- Piña Texture -->
+        <div
+          class="absolute inset-0 bg-pina-texture opacity-60 pointer-events-none z-0"
+        ></div>
+
+        <!-- Men Shoes Background Watermark -->
+        <div
+          class="absolute  flex items-center  pointer-events-none z-0"
+        >
+          <img
+            src="./handfan.png"
+            alt="Men Shoes Background"
+            class="w-full h-full object-contain opacity-10 blur-[0.5px]"
+          />
+        </div>
+
+        <!-- Decorative Frames -->
+        <div
+          class="absolute inset-6 md:inset-12 border border-fil-gold/40 pointer-events-none z-0"
+        ></div>
+        <div
+          class="absolute inset-7 md:inset-[52px] border-2 border-dotted border-fil-gold/20 pointer-events-none z-0"
+        ></div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-lg w-full space-y-6 md:space-y-8">
+          <div class="slide-up">
+            <p
+              class="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-fil-accent mb-3 mt-3"
+            >
+              Save the Date
+            </p>
+            <div class="flex items-center justify-center gap-2">
+              <span class="w-2 h-2 rotate-45 border border-fil-gold"></span>
+              <div class="h-px w-16 bg-fil-gold"></div>
+              <span class="w-2 h-2 rotate-45 border border-fil-gold"></span>
+            </div>
+          </div>
+
+          <div class="slide-up delay-500">
+            <h1
+              class="font-script text-6xl md:text-8xl text-fil-brown leading-tight py-2"
+            >
+              Ed <br class="md:hidden" />
+              <span class="text-3xl md:text-4xl font-serif text-fil-gold italic"
+                >&</span
+              >
+              <br class="md:hidden" />
+              Hara
+            </h1>
+          </div>
+
+          <div class="slide-up delay-1000 space-y-3">
+            <p
+              class="font-serif text-2xl md:text-3xl font-semibold border-t border-b border-fil-brown/10 py-3 inline-block px-8"
+            >
+              June 05, 2026
+            </p>
+            <p
+              class="font-sans text-xs md:text-sm tracking-[0.25em] uppercase text-fil-accent"
+            >
+              Rodriguez, Rizal
+            </p>
+          </div>
+
+          <div
+            class="slide-up delay-1000 text-xs md:text-sm tracking-[0.25em] uppercase text-fil-accent py-4"
+          >
+            Barong Tagalog & Filipiniana Attire
+          </div>
+
+          <div
+            id="countdown"
+            class="slide-up delay-1500 grid grid-cols-4 gap-4 font-serif py-4"
+          >
+            <div class="flex flex-col items-center">
+              <span id="days" class="text-3xl">00</span>
+              <span class="text-[9px] tracking-widest">Araw</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span id="hours" class="text-3xl">00</span>
+              <span class="text-[9px] tracking-widest">Oras</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span id="minutes" class="text-3xl">00</span>
+              <span class="text-[9px] tracking-widest">Minuto</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span id="seconds" class="text-3xl">00</span>
+              <span class="text-[9px] tracking-widest">Segundo</span>
+            </div>
+          </div>
+
+          <p class="font-serif italic text-lg text-fil-accent/80 pt-6">
+            Formal invitation to follow
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const weddingDate = new Date("June 05, 2026 15:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance < 0) return;
+
+        document.getElementById("days").innerText = Math.floor(
+          distance / (1000 * 60 * 60 * 24),
+        )
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").innerText = Math.floor(
+          (distance / (1000 * 60 * 60)) % 24,
+        )
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").innerText = Math.floor(
+          (distance / (1000 * 60)) % 60,
+        )
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").innerText = Math.floor(
+          (distance / 1000) % 60,
+        )
+          .toString()
+          .padStart(2, "0");
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>
