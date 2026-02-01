@@ -41,6 +41,78 @@
       .container {
         position: relative;
         z-index: 1;
+        border: 1px solid black;
+      }
+
+      /* Decorative Image Wrappers */
+      .fan-wrapper,
+      .flower-wrapper,
+      .purse-wrapper,
+      .womanshoe-wrapper,
+      .menshoe-wrapper,
+      .church-wrapper {
+        position: absolute;
+        /* opacity: 0.2; */
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .menshoe-wrapper {
+        top: 250px;
+        left: 10px;
+        transform: rotate(180deg);
+        opacity: 0.08 !important;
+      }
+
+      .womanshoe-wrapper {
+        top: 190px;
+        right: 10px;
+        transform: rotate(180deg);
+        opacity: 0.4 !important;
+      }
+
+      .purse-wrapper {
+        top: 610px;
+        right: 10px;
+        transform: rotate(25deg);
+        opacity: 0.1 !important;
+      }
+
+      .flower-wrapper {
+        top: 70px;
+        left: 10px;
+        transform: rotate(-45deg);
+        opacity: 0.4 !important;
+      }
+
+      .fan-wrapper {
+        top: 10px;
+        right: 10px;
+        transform: rotate(45deg);
+        opacity: 0.4 !important;
+      }
+
+      .church-wrapper {
+        bottom: 10px;
+        right: 10px;
+        opacity: 0.06 !important;
+      }
+
+      .church-wrapper img {
+        max-width: 500px !important;
+      }
+
+      /* Image styling for all decorative items */
+      .fan-wrapper img,
+      .flower-wrapper img,
+      .purse-wrapper img,
+      .womanshoe-wrapper img,
+      .menshoe-wrapper img,
+      .church-wrapper img {
+        max-width: 110px;
+        width: 100%;
+        height: auto;
+        /* filter: sepia(0.5) saturate(3) hue-rotate(10deg) brightness(0.9); */
       }
 
       /* Header Initials */
@@ -118,7 +190,7 @@
 
       /* Dress Code */
       .dress-code {
-        text-align: center; /* center content */
+        text-align: center;
       }
 
       .dress-code img {
@@ -131,14 +203,13 @@
       .text-center * {
         z-index: 1;
       }
-      .container {
-        border: 1px solid black;
-      }
+
+      /* RSVP */
       .rsvp p {
-        font-size: 0.9rem; /* smaller text */
-        color: rgba(0, 0, 0, 0.6); /* lighter, subtle color */
-        font-style: italic; /* makes it softer */
-        margin-top: 2rem; /* space from above content */
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.6);
+        font-style: italic;
+        margin-top: 2rem;
       }
     </style>
 
@@ -147,6 +218,26 @@
 
   <body>
     <div class="container py-5 text-center">
+      <!-- Decorative Images -->
+      <div class="fan-wrapper">
+        <img src="./fan.png" alt="Fan" />
+      </div>
+      <div class="flower-wrapper">
+        <img src="./flower.png" alt="Flower" />
+      </div>
+      <div class="purse-wrapper">
+        <img src="./purse.png" alt="Purse" />
+      </div>
+      <div class="womanshoe-wrapper">
+        <img src="./woman shoe.png" alt="Woman Shoe" />
+      </div>
+      <div class="menshoe-wrapper">
+        <img src="./men shoe.png" alt="Men Shoe" />
+      </div>
+      <div class="church-wrapper">
+        <img src="./church.png" alt="Church" />
+      </div>
+
       <!-- Initials -->
       <div class="mb-3">
         <h1 class="header-initials">EJ</h1>
@@ -193,7 +284,7 @@
 
       <!-- RSVP -->
       <div class="rsvp">
-        <p>RSVP Details to Follow</p>
+        <p>RSVP details to follow</p>
       </div>
     </div>
 
