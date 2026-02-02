@@ -4,13 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,6 +24,7 @@
         font-family: "Playfair Display", serif;
         color: #000;
         position: relative;
+        min-height: 100vh;
       }
 
       /* Overlay to make text readable */
@@ -141,7 +140,6 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        /* margin: 1rem 0; */
       }
 
       /* Invite Subtitle */
@@ -157,16 +155,14 @@
       .names-wrapper.stair-names {
         position: relative;
         width: 100%;
-        height: 80px; /* keep container size */
+        height: 80px;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         font-family: "Great Vibes", cursive;
         font-size: 2.5rem;
-        /* margin: 2rem 0; */
       }
 
-      /* Individual name blocks */
       .stair-names .eduardo {
         position: absolute;
         top: 0;
@@ -175,16 +171,16 @@
 
       .stair-names .and {
         position: absolute;
-        top: 25px;   /* shift down */
-        left: 160px; /* adjust spacing from Eduardo */
+        top: 25px;
+        left: 160px;
         font-family: "Playfair Display", serif;
         font-size: 2rem;
       }
 
       .stair-names .johara {
         position: absolute;
-        top: 50px;   /* shift down more */
-        left: 200px; /* adjust spacing from & */
+        top: 50px;
+        left: 200px;
       }
 
       /* Couple Picture */
@@ -232,16 +228,41 @@
         margin: 1rem auto;
       }
 
-      .text-center * {
-        z-index: 1;
-      }
-
       /* RSVP */
       .rsvp p {
         font-size: 0.9rem;
         color: rgba(0, 0, 0, 0.6);
         font-style: italic;
-        /* margin-top: 2rem; */
+      }
+
+      /* --- Audio Button Styles --- */
+      .audio-control-btn {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        width: 45px;
+        height: 45px;
+        background-color: #c9a24d;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .audio-control-btn:active {
+        transform: scale(0.9);
+      }
+
+      .audio-icon {
+        width: 18px;
+        height: 18px;
+        fill: white;
       }
     </style>
 
@@ -249,8 +270,24 @@
   </head>
 
   <body>
+    <audio id="bg-audio" loop>
+      <source src="If I Ain't Got You.mp3" type="audio/mpeg" />
+    </audio>
+
+    <button
+      id="audio-toggle"
+      class="audio-control-btn"
+      aria-label="Toggle Background Music"
+    >
+      <svg id="play-icon" class="audio-icon" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <svg id="pause-icon" class="audio-icon d-none" viewBox="0 0 24 24">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+      </svg>
+    </button>
+
     <div class="container text-center">
-      <!-- Decorative Images -->
       <div class="fan-wrapper">
         <img src="./fan.png" alt="Fan" />
       </div>
@@ -270,12 +307,10 @@
         <img src="./church2.png" alt="Church" />
       </div>
 
-      <!-- Header Logo -->
-      <div class="header-logo">
+      <div class="header-logo pt-4">
         <img src="./logo-circle.png" alt="Logo" />
       </div>
 
-      <!-- Divider -->
       <div class="divider-wrapper">
         <span class="diamond"></span>
         <div class="line"></div>
@@ -290,25 +325,21 @@
         <span class="diamond"></span>
       </div>
 
-      <!-- Stair-step Names -->
       <div class="names-wrapper stair-names">
         <div class="name eduardo">Eduardo</div>
         <div class="and">&</div>
         <div class="name johara">Johara</div>
       </div>
 
-      <!-- Couple Picture -->
       <div class="couple-pic-container my-4">
         <img src="./pic_frame.png" alt="Couple Picture" class="img-fluid" />
       </div>
 
-      <!-- Date & Venue -->
       <div class="event-details">
         <h2>June 05, 2026</h2>
         <h3>Rodriguez, Rizal</h3>
       </div>
 
-      <!-- Dress Code -->
       <div class="dress-code">
         <p class="invite-subtitle">
           Attire: <br />
@@ -317,13 +348,33 @@
         <img src="./dress_code2.png" alt="Dress Code" />
       </div>
 
-      <!-- RSVP -->
-      <div class="rsvp">
+      <div class="rsvp pb-5">
         <p>RSVP details to follow</p>
       </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const audio = document.getElementById("bg-audio");
+      const btn = document.getElementById("audio-toggle");
+      const playIcon = document.getElementById("play-icon");
+      const pauseIcon = document.getElementById("pause-icon");
+
+      btn.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playIcon.classList.add("d-none");
+          pauseIcon.classList.remove("d-none");
+        } else {
+          audio.pause();
+          playIcon.classList.remove("d-none");
+          pauseIcon.classList.add("d-none");
+        }
+      });
+
+      // Note: Browsers usually block autoplay until the user clicks something.
+      // This button acts as that necessary interaction.
+    </script>
   </body>
 </html>
