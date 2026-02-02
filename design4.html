@@ -41,7 +41,7 @@
       .container {
         position: relative;
         z-index: 1;
-        border: 1px solid black;
+        /* border: 1px solid black; */
       }
 
       /* Decorative Image Wrappers */
@@ -58,21 +58,21 @@
       }
 
       .menshoe-wrapper {
-        top: 250px;
+        top: 270px;
         left: 10px;
         transform: rotate(180deg);
         opacity: 0.05 !important;
       }
 
       .womanshoe-wrapper {
-        top: 190px;
+        top: 240px;
         right: 10px;
         transform: rotate(180deg);
         opacity: 0.2 !important;
       }
 
       .purse-wrapper {
-        top: 610px;
+        top: 650px;
         right: 10px;
         transform: rotate(25deg);
         opacity: 0.1 !important;
@@ -93,7 +93,7 @@
       }
 
       .church-wrapper {
-        bottom: 10px;
+        bottom: 30px;
         right: 10px;
         opacity: 0.06 !important;
       }
@@ -211,13 +211,21 @@
         font-style: italic;
         margin-top: 2rem;
       }
+
+      .header-logo img {
+        max-width: 150px; /* adjust size as needed */
+        width: 100%;
+        max-height: 150px;
+        display: block;
+        margin: 0 auto; /* center horizontally */
+      }
     </style>
 
     <title>Save the Date Wedding</title>
   </head>
 
   <body>
-    <div class="container py-5 text-center">
+    <div class="container text-center">
       <!-- Decorative Images -->
       <div class="fan-wrapper">
         <img src="./fan.png" alt="Fan" />
@@ -235,12 +243,12 @@
         <img src="./men shoe.png" alt="Men Shoe" />
       </div>
       <div class="church-wrapper">
-        <img src="./church.png" alt="Church" />
+        <img src="./church2.png" alt="Church" />
       </div>
 
       <!-- Initials -->
-      <div class="mb-3">
-        <h1 class="header-initials">EJ</h1>
+      <div class="header-logo">
+        <img src="./logo-circle.png" alt="Logo" />
       </div>
 
       <!-- Divider -->
@@ -278,8 +286,8 @@
 
       <!-- Dress Code -->
       <div class="dress-code">
-        <p class="invite-subtitle">Barong and Filipiniana Attire</p>
-        <img src="./dress_code.png" alt="Dress Code" />
+        <p class="invite-subtitle">Attire: <br> Barong and Filipiñana</p>
+        <img src="./dress_code2.png" alt="Dress Code" />
       </div>
 
       <!-- RSVP -->
