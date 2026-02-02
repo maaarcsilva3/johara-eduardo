@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Body Background */
+      body {
+        background-image: url("./bg_old_paper.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: "Playfair Display", serif;
+        color: #000;
+        position: relative;
+      }
+
+      /* Overlay to make text readable */
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.3);
+        z-index: 0;
+      }
+
+      /* Containers on top of overlay */
+      .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Decorative Image Wrappers */
+      .fan-wrapper,
+      .flower-wrapper,
+      .purse-wrapper,
+      .womanshoe-wrapper,
+      .menshoe-wrapper,
+      .church-wrapper {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .menshoe-wrapper {
+        top: 270px;
+        left: 10px;
+        transform: rotate(180deg);
+        opacity: 0.05 !important;
+      }
+
+      .womanshoe-wrapper {
+        top: 240px;
+        right: 10px;
+        transform: rotate(180deg);
+        opacity: 0.2 !important;
+      }
+
+      .purse-wrapper {
+        top: 710px;
+        right: 10px;
+        transform: rotate(25deg);
+        opacity: 0.06 !important;
+      }
+
+      .flower-wrapper {
+        top: 70px;
+        left: 10px;
+        transform: rotate(-45deg);
+        opacity: 0.2 !important;
+      }
+
+      .fan-wrapper {
+        top: 10px;
+        right: 10px;
+        transform: rotate(45deg);
+        opacity: 0.2 !important;
+      }
+
+      .church-wrapper {
+        bottom: 30px;
+        right: 10px;
+        opacity: 0.06 !important;
+      }
+
+      .church-wrapper img {
+        max-width: 500px !important;
+      }
+
+      /* Image styling for all decorative items */
+      .fan-wrapper img,
+      .flower-wrapper img,
+      .purse-wrapper img,
+      .womanshoe-wrapper img,
+      .menshoe-wrapper img,
+      .church-wrapper img {
+        max-width: 110px;
+        width: 100%;
+        height: auto;
+      }
+
+      /* Header Logo */
+      .header-logo img {
+        max-width: 150px;
+        width: 100%;
+        max-height: 150px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Diamond Divider */
+      .diamond {
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        border: 2px solid #c9a24d;
+      }
+
+      .line {
+        width: 200px;
+        height: 2px;
+        background-color: #c9a24d;
+      }
+
+      .divider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        /* margin: 1rem 0; */
+      }
+
+      /* Invite Subtitle */
+      .invite-subtitle {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.35em;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin: 1rem 0;
+      }
+
+      /* Stair-step Couple Names */
+      .names-wrapper.stair-names {
+        position: relative;
+        width: 100%;
+        height: 80px; /* keep container size */
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-family: "Great Vibes", cursive;
+        font-size: 2.5rem;
+        /* margin: 2rem 0; */
+      }
+
+      /* Individual name blocks */
+      .stair-names .eduardo {
+        position: absolute;
+        top: 0;
+        left: 20px;
+      }
+
+      .stair-names .and {
+        position: absolute;
+        top: 25px;   /* shift down */
+        left: 160px; /* adjust spacing from Eduardo */
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+      }
+
+      .stair-names .johara {
+        position: absolute;
+        top: 50px;   /* shift down more */
+        left: 200px; /* adjust spacing from & */
+      }
+
+      /* Couple Picture */
+      .couple-pic-container img {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+        -webkit-mask-image:
+          linear-gradient(
+            to right,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          ),
+          linear-gradient(
+            to bottom,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          );
+        -webkit-mask-composite: intersect;
+        mask-composite: intersect;
+      }
+
+      /* Event Details */
+      .event-details h2,
+      .event-details h3 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2rem;
+        margin: 0.3rem 0;
+      }
+
+      /* Dress Code */
+      .dress-code {
+        text-align: center;
+      }
+
+      .dress-code img {
+        max-width: 150px;
+        width: 100%;
+        display: block;
+        margin: 1rem auto;
+      }
+
+      .text-center * {
+        z-index: 1;
+      }
+
+      /* RSVP */
+      .rsvp p {
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.6);
+        font-style: italic;
+        /* margin-top: 2rem; */
+      }
+    </style>
+
+    <title>Save the Date Wedding</title>
+  </head>
+
+  <body>
+    <div class="container text-center">
+      <!-- Decorative Images -->
+      <div class="fan-wrapper">
+        <img src="./fan.png" alt="Fan" />
+      </div>
+      <div class="flower-wrapper">
+        <img src="./flower.png" alt="Flower" />
+      </div>
+      <div class="purse-wrapper">
+        <img src="./purse.png" alt="Purse" />
+      </div>
+      <div class="womanshoe-wrapper">
+        <img src="./woman shoe.png" alt="Woman Shoe" />
+      </div>
+      <div class="menshoe-wrapper">
+        <img src="./men shoe.png" alt="Men Shoe" />
+      </div>
+      <div class="church-wrapper">
+        <img src="./church2.png" alt="Church" />
+      </div>
+
+      <!-- Header Logo -->
+      <div class="header-logo">
+        <img src="./logo-circle.png" alt="Logo" />
+      </div>
+
+      <!-- Divider -->
+      <div class="divider-wrapper">
+        <span class="diamond"></span>
+        <div class="line"></div>
+        <span class="diamond"></span>
+      </div>
+
+      <p class="invite-subtitle text-uppercase my-3">Save the Date</p>
+
+      <div class="divider-wrapper mb-4">
+        <span class="diamond"></span>
+        <div class="line"></div>
+        <span class="diamond"></span>
+      </div>
+
+      <!-- Stair-step Names -->
+      <div class="names-wrapper stair-names">
+        <div class="name eduardo">Eduardo</div>
+        <div class="and">&</div>
+        <div class="name johara">Johara</div>
+      </div>
+
+      <!-- Couple Picture -->
+      <div class="couple-pic-container my-4">
+        <img src="./pic_frame.png" alt="Couple Picture" class="img-fluid" />
+      </div>
+
+      <!-- Date & Venue -->
+      <div class="event-details">
+        <h2>June 05, 2026</h2>
+        <h3>Rodriguez, Rizal</h3>
+      </div>
+
+      <!-- Dress Code -->
+      <div class="dress-code">
+        <p class="invite-subtitle">
+          Attire: <br />
+          Barong and Filipiñana
+        </p>
+        <img src="./dress_code2.png" alt="Dress Code" />
+      </div>
+
+      <!-- RSVP -->
+      <div class="rsvp">
+        <p>RSVP details to follow</p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
