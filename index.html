@@ -251,8 +251,8 @@
       /* ========================================= */
       #intro-overlay {
         position: fixed;
-        inset: 0; /* covers entire screen */
-        background-color: #fcf8ec; /* Matches paper aesthetic */
+        inset: 0;
+        background-color: #fcf8ec;
         z-index: 9999;
         display: flex;
         flex-direction: column;
@@ -272,7 +272,6 @@
       #intro-overlay img {
         max-width: 180px;
         margin-bottom: 2rem;
-        /* Subtle pulse animation for logo */
         animation: logoPulse 3s infinite ease-in-out;
       }
 
@@ -291,6 +290,7 @@
         }
       }
 
+      /* Button Styles - Hidden initially */
       .btn-open {
         background: transparent;
         color: #c9a24d;
@@ -304,12 +304,45 @@
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
+
+        /* Hidden state settings */
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+      }
+
+      /* Visible state for button (applied by JS) */
+      .btn-open.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
       .btn-open:hover {
         background-color: #c9a24d;
         color: #fff;
         box-shadow: 0 5px 15px rgba(201, 162, 77, 0.4);
+      }
+
+      /* Loading Spinner */
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #c9a24d;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        top: 60%; /* Position roughly where button will be */
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
     </style>
 
@@ -318,7 +351,10 @@
 
   <body>
     <div id="intro-overlay">
-      <img src="./logo-circle.png" alt="Logo" loading="lazy" decoding="async" />
+      <img src="./logo-circle.png" alt="Logo" />
+
+      <div id="loader" class="loader"></div>
+
       <button id="btn-enter" class="btn-open">Open Invitation</button>
     </div>
 
@@ -354,7 +390,12 @@
       <div class="church-wrapper"><img src="./church2.png" alt="Church" /></div>
 
       <div class="header-logo pt-4">
-        <img src="./logo-circle.png" alt="Logo" loading="lazy" decoding="async" />
+        <img
+          src="./logo-circle.png"
+          alt="Logo"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div class="divider-wrapper">
@@ -378,7 +419,13 @@
       </div>
 
       <div class="couple-pic-container my-4">
-        <img src="./pic_frame.png" alt="Couple Picture" class="img-fluid" loading="lazy" decoding="async" />
+        <img
+          src="./pic_frame.png"
+          alt="Couple Picture"
+          class="img-fluid"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div class="event-details">
@@ -402,19 +449,29 @@
       const playIcon = document.getElementById("play-icon");
       const pauseIcon = document.getElementById("pause-icon");
 
-      // New Elements
+      // New Elements for Loader Logic
       const overlay = document.getElementById("intro-overlay");
       const enterBtn = document.getElementById("btn-enter");
+      const loader = document.getElementById("loader");
 
-      audio.volume = 0.5; // Set volume
+      audio.volume = 0.5;
 
-      // Function to handle opening the invitation
+      // ==========================================
+      // WAITS FOR EVERYTHING TO LOAD (Images, CSS, etc.)
+      // ==========================================
+      window.addEventListener("load", () => {
+        // 1. Hide the spinner
+        loader.style.display = "none";
+
+        // 2. Show the button with a smooth fade
+        enterBtn.classList.add("visible");
+      });
+
+      // Handle opening the invitation
       enterBtn.addEventListener("click", () => {
-        // 1. Play the audio
         audio
           .play()
           .then(() => {
-            // Update icons to show pause (since music is playing)
             playIcon.classList.add("d-none");
             pauseIcon.classList.remove("d-none");
           })
@@ -422,11 +479,10 @@
             console.log("Audio play failed:", error);
           });
 
-        // 2. Fade out the overlay
         overlay.classList.add("hidden");
       });
 
-      // Existing toggle logic
+      // Audio toggle logic
       btn.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
