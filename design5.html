@@ -50,12 +50,41 @@
         pointer-events: none;
       }
 
-      .menshoe-wrapper { top: 280px; left: 10px; transform: rotate(180deg); opacity: 0.05; }
-      .womanshoe-wrapper { top: 280px; right: 10px; transform: rotate(180deg); opacity: 0.2; }
-      .purse-wrapper { top: 720px; right: 10px; transform: rotate(25deg); opacity: 0.06; }
-      .flower-wrapper { top: 70px; left: 10px; transform: rotate(-45deg); opacity: 0.2; }
-      .fan-wrapper { top: 10px; right: 10px; transform: rotate(45deg); opacity: 0.2; }
-      .church-wrapper { bottom: 80px; right: 10px; opacity: 0.06; }
+      .menshoe-wrapper {
+        top: 280px;
+        left: 10px;
+        transform: rotate(180deg);
+        opacity: 0.05;
+      }
+      .womanshoe-wrapper {
+        top: 280px;
+        right: 10px;
+        transform: rotate(180deg);
+        opacity: 0.2;
+      }
+      .purse-wrapper {
+        top: 720px;
+        right: 10px;
+        transform: rotate(25deg);
+        opacity: 0.06;
+      }
+      .flower-wrapper {
+        top: 70px;
+        left: 10px;
+        transform: rotate(-45deg);
+        opacity: 0.2;
+      }
+      .fan-wrapper {
+        top: 10px;
+        right: 10px;
+        transform: rotate(45deg);
+        opacity: 0.2;
+      }
+      .church-wrapper {
+        bottom: 80px;
+        right: 10px;
+        opacity: 0.06;
+      }
 
       .fan-wrapper img,
       .flower-wrapper img,
@@ -68,7 +97,9 @@
         height: auto;
       }
 
-      .church-wrapper img { max-width: 500px; }
+      .church-wrapper img {
+        max-width: 500px;
+      }
 
       /* Header Logo */
       .header-logo img {
@@ -79,9 +110,23 @@
       }
 
       /* Diamond Divider */
-      .diamond { width: 10px; height: 10px; transform: rotate(45deg); border: 2px solid #c9a24d; }
-      .line { width: 200px; height: 2px; background-color: #c9a24d; }
-      .divider-wrapper { display: flex; align-items: center; justify-content: center; gap: 10px; }
+      .diamond {
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        border: 2px solid #c9a24d;
+      }
+      .line {
+        width: 200px;
+        height: 2px;
+        background-color: #c9a24d;
+      }
+      .divider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
 
       /* Invite Subtitle */
       .invite-subtitle {
@@ -100,9 +145,23 @@
         font-family: "Great Vibes", cursive;
         font-size: 2.5rem;
       }
-      .stair-names .eduardo { position: absolute; top: 0; left: 20px; }
-      .stair-names .and { position: absolute; top: 25px; left: 160px; font-family: "Playfair Display", serif; font-size: 2rem; }
-      .stair-names .johara { position: absolute; top: 50px; left: 200px; }
+      .stair-names .eduardo {
+        position: absolute;
+        top: 0;
+        left: 20px;
+      }
+      .stair-names .and {
+        position: absolute;
+        top: 25px;
+        left: 160px;
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+      }
+      .stair-names .johara {
+        position: absolute;
+        top: 50px;
+        left: 200px;
+      }
 
       /* Couple Picture */
       .couple-pic-container img {
@@ -111,8 +170,20 @@
         border-radius: 10px;
         margin-top: 10px;
         -webkit-mask-image:
-          linear-gradient(to right, transparent, black 12%, black 88%, transparent),
-          linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+          linear-gradient(
+            to right,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          ),
+          linear-gradient(
+            to bottom,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          );
         -webkit-mask-composite: intersect;
         mask-composite: intersect;
       }
@@ -126,11 +197,22 @@
       }
 
       /* Dress Code */
-      .dress-code { text-align: center; }
-      .dress-code img { max-width: 150px; width: 100%; display: block; margin: 1rem auto; }
+      .dress-code {
+        text-align: center;
+      }
+      .dress-code img {
+        max-width: 150px;
+        width: 100%;
+        display: block;
+        margin: 1rem auto;
+      }
 
       /* RSVP */
-      .rsvp p { font-size: 0.9rem; color: rgba(0, 0, 0, 0.6); font-style: italic; }
+      .rsvp p {
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.6);
+        font-style: italic;
+      }
 
       /* Audio Control */
       .audio-controls-wrapper {
@@ -155,22 +237,36 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
       }
-      .audio-control-btn:active { transform: scale(0.9); }
-      .audio-icon { width: 18px; height: 18px; fill: white; }
+      .audio-control-btn:active {
+        transform: scale(0.9);
+      }
+      .audio-icon {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
     </style>
 
     <title>Save the Date Wedding</title>
   </head>
 
   <body>
-    <audio id="bg-audio" loop>
+    <audio id="bg-audio" autoplay loop muted>
       <source src="If I Ain't Got You.mp3" type="audio/mpeg" />
     </audio>
 
     <div class="audio-controls-wrapper">
-      <button id="audio-toggle" class="audio-control-btn" aria-label="Toggle Background Music">
-        <svg id="play-icon" class="audio-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="pause-icon" class="audio-icon d-none" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      <button
+        id="audio-toggle"
+        class="audio-control-btn"
+        aria-label="Toggle Background Music"
+      >
+        <svg id="play-icon" class="audio-icon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pause-icon" class="audio-icon d-none" viewBox="0 0 24 24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
       </button>
     </div>
 
@@ -178,11 +274,17 @@
       <div class="fan-wrapper"><img src="./fan.png" alt="Fan" /></div>
       <div class="flower-wrapper"><img src="./flower.png" alt="Flower" /></div>
       <div class="purse-wrapper"><img src="./purse.png" alt="Purse" /></div>
-      <div class="womanshoe-wrapper"><img src="./woman shoe.png" alt="Woman Shoe" /></div>
-      <div class="menshoe-wrapper"><img src="./men shoe.png" alt="Men Shoe" /></div>
+      <div class="womanshoe-wrapper">
+        <img src="./woman shoe.png" alt="Woman Shoe" />
+      </div>
+      <div class="menshoe-wrapper">
+        <img src="./men shoe.png" alt="Men Shoe" />
+      </div>
       <div class="church-wrapper"><img src="./church2.png" alt="Church" /></div>
 
-      <div class="header-logo pt-4"><img src="./logo-circle.png" alt="Logo" /></div>
+      <div class="header-logo pt-4">
+        <img src="./logo-circle.png" alt="Logo" />
+      </div>
 
       <div class="divider-wrapper">
         <span class="diamond"></span>
@@ -228,6 +330,10 @@
       const btn = document.getElementById("audio-toggle");
       const playIcon = document.getElementById("play-icon");
       const pauseIcon = document.getElementById("pause-icon");
+
+      // Set volume and unmute after page load
+      audio.volume = 0.2;
+      audio.muted = false; // unmute after autoplay starts
 
       btn.addEventListener("click", () => {
         if (audio.paused) {
