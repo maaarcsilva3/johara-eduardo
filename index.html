@@ -1,28 +1,443 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Body Background */
+      body {
+        background: url("./bg_old_paper.png") center/cover no-repeat;
+        font-family: "Playfair Display", serif;
+        color: #000;
+        position: relative;
+        min-height: 100vh;
+        /* Prevent scrolling while overlay is active */
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .container {
+        position: relative;
+        max-width: 350px;
+        z-index: 1;
+      }
+
+      /* Decorative Images */
+      .fan-wrapper,
+      .flower-wrapper,
+      .purse-wrapper,
+      .womanshoe-wrapper,
+      .menshoe-wrapper,
+      .church-wrapper {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .menshoe-wrapper {
+        top: 280px;
+        left: 10px;
+        transform: rotate(180deg);
+        opacity: 0.05;
+      }
+      .womanshoe-wrapper {
+        top: 280px;
+        right: 10px;
+        transform: rotate(180deg);
+        opacity: 0.2;
+      }
+      .purse-wrapper {
+        top: 720px;
+        right: 10px;
+        transform: rotate(25deg);
+        opacity: 0.06;
+      }
+      .flower-wrapper {
+        top: 70px;
+        left: 10px;
+        transform: rotate(-45deg);
+        opacity: 0.2;
+      }
+      .fan-wrapper {
+        top: 10px;
+        right: 10px;
+        transform: rotate(45deg);
+        opacity: 0.2;
+      }
+      .church-wrapper {
+        bottom: 80px;
+        right: 10px;
+        opacity: 0.06;
+      }
+
+      .fan-wrapper img,
+      .flower-wrapper img,
+      .purse-wrapper img,
+      .womanshoe-wrapper img,
+      .menshoe-wrapper img,
+      .church-wrapper img {
+        max-width: 110px;
+        width: 100%;
+        height: auto;
+      }
+
+      .church-wrapper img {
+        max-width: 500px;
+      }
+
+      /* Header Logo */
+      .header-logo img {
+        max-width: 150px;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Diamond Divider */
+      .diamond {
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        border: 2px solid #c9a24d;
+      }
+      .line {
+        width: 200px;
+        height: 2px;
+        background-color: #c9a24d;
+      }
+      .divider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      /* Invite Subtitle */
+      .invite-subtitle {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.35em;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin: 1rem 0;
+      }
+
+      /* Stair-step Couple Names */
+      .names-wrapper.stair-names {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        font-family: "Great Vibes", cursive;
+        font-size: 2.5rem;
+      }
+      .stair-names .eduardo {
+        position: absolute;
+        top: 0;
+        left: 20px;
+      }
+      .stair-names .and {
+        position: absolute;
+        top: 25px;
+        left: 160px;
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+      }
+      .stair-names .johara {
+        position: absolute;
+        top: 50px;
+        left: 200px;
+      }
+
+      /* Couple Picture */
+      .couple-pic-container img {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+        -webkit-mask-image:
+          linear-gradient(
+            to right,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          ),
+          linear-gradient(
+            to bottom,
+            transparent,
+            black 12%,
+            black 88%,
+            transparent
+          );
+        -webkit-mask-composite: intersect;
+        mask-composite: intersect;
+      }
+
+      /* Event Details */
+      .event-details h2,
+      .event-details h3 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2rem;
+        margin: 0.3rem 0;
+      }
+
+      /* Dress Code */
+      .dress-code {
+        text-align: center;
+      }
+      .dress-code img {
+        max-width: 150px;
+        width: 100%;
+        display: block;
+        margin: 1rem auto;
+      }
+
+      /* RSVP */
+      .rsvp p {
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.6);
+        font-style: italic;
+      }
+
+      /* Audio Control */
+      .audio-controls-wrapper {
+        position: fixed;
+        bottom: 40px;
+        left: 25px;
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+      }
+      .audio-control-btn {
+        width: 45px;
+        height: 45px;
+        background-color: #c9a24d;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+      .audio-control-btn:active {
+        transform: scale(0.9);
+      }
+      .audio-icon {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
+
+      /* ========================================= */
+      /* NEW OVERLAY STYLES */
+      /* ========================================= */
+      #intro-overlay {
+        position: fixed;
+        inset: 0; /* covers entire screen */
+        background-color: #fcf8ec; /* Matches paper aesthetic */
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 1.5s ease,
+          visibility 1.5s ease;
+      }
+
+      #intro-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      #intro-overlay img {
+        max-width: 180px;
+        margin-bottom: 2rem;
+        /* Subtle pulse animation for logo */
+        animation: logoPulse 3s infinite ease-in-out;
+      }
+
+      @keyframes logoPulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+      }
+
+      .btn-open {
+        background: transparent;
+        color: #c9a24d;
+        border: 2px solid #c9a24d;
+        padding: 12px 30px;
+        font-family: "Playfair Display", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-open:hover {
+        background-color: #c9a24d;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(201, 162, 77, 0.4);
+      }
+    </style>
+
+    <title>Save the Date Wedding</title>
   </head>
+
   <body>
-    <a href="./design1.html">
-      <button>Design 1</button>
-    </a>
+    <div id="intro-overlay">
+      <img src="./logo-circle.png" alt="Logo" loading="lazy" decoding="async" />
+      <button id="btn-enter" class="btn-open">Open Invitation</button>
+    </div>
 
-    <a href="./design2.html">
-      <button>Design 2</button>
-    </a>
+    <audio id="bg-audio" loop>
+      <source src="If I Ain't Got You.mp3" type="audio/mpeg" />
+    </audio>
 
-    <a href="./design3.html">
-      <button>Design 3</button>
-    </a>
+    <div class="audio-controls-wrapper">
+      <button
+        id="audio-toggle"
+        class="audio-control-btn"
+        aria-label="Toggle Background Music"
+      >
+        <svg id="play-icon" class="audio-icon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pause-icon" class="audio-icon d-none" viewBox="0 0 24 24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+      </button>
+    </div>
 
-    <a href="./design4.html">
-      <button>Design 4</button>
-    </a>
+    <div class="container text-center">
+      <div class="fan-wrapper"><img src="./fan.png" alt="Fan" /></div>
+      <div class="flower-wrapper"><img src="./flower.png" alt="Flower" /></div>
+      <div class="purse-wrapper"><img src="./purse.png" alt="Purse" /></div>
+      <div class="womanshoe-wrapper">
+        <img src="./woman shoe.png" alt="Woman Shoe" />
+      </div>
+      <div class="menshoe-wrapper">
+        <img src="./men shoe.png" alt="Men Shoe" />
+      </div>
+      <div class="church-wrapper"><img src="./church2.png" alt="Church" /></div>
 
-    <a href="./design5.html">
-      <button>Design 5</button>
-    </a>
+      <div class="header-logo pt-4">
+        <img src="./logo-circle.png" alt="Logo" />
+      </div>
+
+      <div class="divider-wrapper">
+        <span class="diamond"></span>
+        <div class="line"></div>
+        <span class="diamond"></span>
+      </div>
+
+      <p class="invite-subtitle text-uppercase my-3">Save the Date</p>
+
+      <div class="divider-wrapper mb-4">
+        <span class="diamond"></span>
+        <div class="line"></div>
+        <span class="diamond"></span>
+      </div>
+
+      <div class="names-wrapper stair-names">
+        <div class="name eduardo">Eduardo</div>
+        <div class="and">&</div>
+        <div class="name johara">Johara</div>
+      </div>
+
+      <div class="couple-pic-container my-4">
+        <img src="./pic_frame.png" alt="Couple Picture" class="img-fluid" />
+      </div>
+
+      <div class="event-details">
+        <h2>June 05, 2026</h2>
+        <h3>Rodriguez, Rizal</h3>
+      </div>
+
+      <div class="dress-code">
+        <p class="invite-subtitle">Attire: <br />Barong and Filipiñana</p>
+        <img src="./dress_code2.png" alt="Dress Code" />
+      </div>
+
+      <div class="rsvp pb-5"><p>RSVP details to follow</p></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const audio = document.getElementById("bg-audio");
+      const btn = document.getElementById("audio-toggle");
+      const playIcon = document.getElementById("play-icon");
+      const pauseIcon = document.getElementById("pause-icon");
+
+      // New Elements
+      const overlay = document.getElementById("intro-overlay");
+      const enterBtn = document.getElementById("btn-enter");
+
+      audio.volume = 0.5; // Set volume
+
+      // Function to handle opening the invitation
+      enterBtn.addEventListener("click", () => {
+        // 1. Play the audio
+        audio
+          .play()
+          .then(() => {
+            // Update icons to show pause (since music is playing)
+            playIcon.classList.add("d-none");
+            pauseIcon.classList.remove("d-none");
+          })
+          .catch((error) => {
+            console.log("Audio play failed:", error);
+          });
+
+        // 2. Fade out the overlay
+        overlay.classList.add("hidden");
+      });
+
+      // Existing toggle logic
+      btn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          playIcon.classList.add("d-none");
+          pauseIcon.classList.remove("d-none");
+        } else {
+          audio.pause();
+          playIcon.classList.remove("d-none");
+          pauseIcon.classList.add("d-none");
+        }
+      });
+    </script>
   </body>
 </html>
