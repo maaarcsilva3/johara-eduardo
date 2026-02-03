@@ -4,13 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -24,6 +22,8 @@
         color: #000;
         position: relative;
         min-height: 100vh;
+        /* Prevent scrolling while overlay is active */
+        overflow-x: hidden;
       }
 
       body::before {
@@ -245,13 +245,84 @@
         height: 18px;
         fill: white;
       }
+
+      /* ========================================= */
+      /* NEW OVERLAY STYLES */
+      /* ========================================= */
+      #intro-overlay {
+        position: fixed;
+        inset: 0; /* covers entire screen */
+        background-color: #fcf8ec; /* Matches paper aesthetic */
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 1.5s ease,
+          visibility 1.5s ease;
+      }
+
+      #intro-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      #intro-overlay img {
+        max-width: 180px;
+        margin-bottom: 2rem;
+        /* Subtle pulse animation for logo */
+        animation: logoPulse 3s infinite ease-in-out;
+      }
+
+      @keyframes logoPulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+      }
+
+      .btn-open {
+        background: transparent;
+        color: #c9a24d;
+        border: 2px solid #c9a24d;
+        padding: 12px 30px;
+        font-family: "Playfair Display", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-open:hover {
+        background-color: #c9a24d;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(201, 162, 77, 0.4);
+      }
     </style>
 
     <title>Save the Date Wedding</title>
   </head>
 
   <body>
-    <audio id="bg-audio" autoplay loop muted>
+    <div id="intro-overlay">
+      <img src="./logo-circle.png" alt="Logo" />
+      <button id="btn-enter" class="btn-open">Open Invitation</button>
+    </div>
+
+    <audio id="bg-audio" loop>
       <source src="If I Ain't Got You.mp3" type="audio/mpeg" />
     </audio>
 
@@ -331,10 +402,31 @@
       const playIcon = document.getElementById("play-icon");
       const pauseIcon = document.getElementById("pause-icon");
 
-      // Set volume and unmute after page load
-      audio.volume = 0.2;
-      audio.muted = false; // unmute after autoplay starts
+      // New Elements
+      const overlay = document.getElementById("intro-overlay");
+      const enterBtn = document.getElementById("btn-enter");
 
+      audio.volume = 0.5; // Set volume
+
+      // Function to handle opening the invitation
+      enterBtn.addEventListener("click", () => {
+        // 1. Play the audio
+        audio
+          .play()
+          .then(() => {
+            // Update icons to show pause (since music is playing)
+            playIcon.classList.add("d-none");
+            pauseIcon.classList.remove("d-none");
+          })
+          .catch((error) => {
+            console.log("Audio play failed:", error);
+          });
+
+        // 2. Fade out the overlay
+        overlay.classList.add("hidden");
+      });
+
+      // Existing toggle logic
       btn.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
